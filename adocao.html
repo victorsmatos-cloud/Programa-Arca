@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adoção - ARCA</title>
+    <link rel="stylesheet" href="style-adocao.css">
+</head>
+<body>
+    <div class="container">
+
+        <header>
+            <div class="header-esquerda">
+                <span>ARCA</span>
+            </div>
+            <button class="header-sair">Sair</button>
+        </header>
+
+        <div class="menu-lateral">
+
+            <aside>
+                <ul>
+                    <li><a href="telainicial.html">&#127968; Home</a></li>
+                    <li><a href="sobre-nos.html">&#8505; Sobre Nós</a></li>
+                    <li class="ativo"><a href="#">&#10084; Adoção</a></li>
+                    <li><a href="agendamento.html">&#128197; Agendamentos</a></li>
+                    <li><a href="#">&#9888; Emergências</a></li>
+                    <li><a href="eventos.html">&#11088; Eventos</a></li>
+                    <li><a href="processos.html">&#128196; Processos</a></li>
+                    <li><a href="ajuda.html">&#10067; Ajuda</a></li>
+                    <li><a href="perfil.html">&#128100; Perfil</a></li>
+                </ul>
+            </aside>
+
+            <main class="conteudo-principal">
+                <div class="cards">
+                    <h1>&#10084; Formulário de Adoção</h1>
+                    <p class="subtitulo">Preencha o formulário abaixo para iniciar seu processo de adoção consciente.</p>
+
+                    <div class="aviso">
+                        <span class="aviso-icone">&#8505;</span>
+                        <p>A adoção é um processo responsável. Após o envio do formulário, nossa equipe entrará em contato para agendar uma visita domiciliar.</p>
+                    </div>
+
+                    <form id="form-adocao" novalidate>
+
+                        <h3 class="secao-titulo">Dados do Adotante</h3>
+
+                        <div class="form-grid">
+                            <div class="campo">
+                                <label for="nome">Nome Completo</label>
+                                <input type="text" id="nome" placeholder="Seu nome completo" required>
+                            </div>
+                            <div class="campo">
+                                <label for="email">E-mail</label>
+                                <input type="email" id="email" placeholder="Seu e-mail" required>
+                            </div>
+                            <div class="campo">
+                                <label for="cpf">CPF</label>
+                                <input type="text" id="cpf" placeholder="000.000.000-00" required>
+                            </div>
+                            <div class="campo">
+                                <label for="telefone">Telefone</label>
+                                <input type="tel" id="telefone" placeholder="(00) 00000-0000" required>
+                            </div>
+                            <div class="campo">
+                                <label for="nascimento">Data de Nascimento</label>
+                                <input type="date" id="nascimento" required>
+                            </div>
+                            <div class="campo">
+                                <label for="renda">Renda Familiar Aproximada</label>
+                                <select id="renda">
+                                    <option value="">Selecione</option>
+                                    <option>Até R$ 1.500</option>
+                                    <option>R$ 1.500 a R$ 3.000</option>
+                                    <option>R$ 3.000 a R$ 6.000</option>
+                                    <option>Acima de R$ 6.000</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <h3 class="secao-titulo">Endereço</h3>
+
+                        <div class="form-grid">
+                            <div class="campo">
+                                <label for="rua">Rua</label>
+                                <input type="text" id="rua" placeholder="Nome da rua" required>
+                            </div>
+                            <div class="campo">
+                                <label for="numero">Número</label>
+                                <input type="text" id="numero" placeholder="Nº">
+                            </div>
+                            <div class="campo">
+                                <label for="bairro">Bairro</label>
+                                <input type="text" id="bairro" placeholder="Seu bairro" required>
+                            </div>
+                            <div class="campo">
+                                <label for="cep">CEP</label>
+                                <input type="text" id="cep" placeholder="00000-000" required>
+                            </div>
+                        </div>
+
+                        <h3 class="secao-titulo">Sobre sua Moradia</h3>
+
+                        <div class="form-grid">
+                            <div class="campo">
+                                <label for="tipo-moradia">Tipo de Moradia</label>
+                                <select id="tipo-moradia">
+                                    <option value="">Selecione</option>
+                                    <option>Casa com quintal</option>
+                                    <option>Casa sem quintal</option>
+                                    <option>Apartamento</option>
+                                </select>
+                            </div>
+                            <div class="campo">
+                                <label for="moradia-propria">Moradia</label>
+                                <select id="moradia-propria">
+                                    <option value="">Selecione</option>
+                                    <option>Própria</option>
+                                    <option>Alugada</option>
+                                    <option>Cedida</option>
+                                </select>
+                            </div>
+                            <div class="campo">
+                                <label for="moradores">Número de moradores</label>
+                                <input type="number" id="moradores" placeholder="Ex: 3" min="1">
+                            </div>
+                            <div class="campo">
+                                <label for="criancas">Há crianças na casa?</label>
+                                <select id="criancas">
+                                    <option value="">Selecione</option>
+                                    <option>Não</option>
+                                    <option>Sim, até 5 anos</option>
+                                    <option>Sim, entre 5 e 12 anos</option>
+                                    <option>Sim, acima de 12 anos</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <h3 class="secao-titulo">Sobre o Animal que Deseja Adotar</h3>
+
+                        <div class="form-grid">
+                            <div class="campo">
+                                <label for="especie-adotar">Espécie</label>
+                                <select id="especie-adotar">
+                                    <option value="">Selecione</option>
+                                    <option>Cão</option>
+                                    <option>Gato</option>
+                                    <option>Sem preferência</option>
+                                </select>
+                            </div>
+                            <div class="campo">
+                                <label for="porte">Porte</label>
+                                <select id="porte">
+                                    <option value="">Selecione</option>
+                                    <option>Pequeno</option>
+                                    <option>Médio</option>
+                                    <option>Grande</option>
+                                    <option>Sem preferência</option>
+                                </select>
+                            </div>
+                            <div class="campo">
+                                <label for="idade-animal">Faixa etária</label>
+                                <select id="idade-animal">
+                                    <option value="">Selecione</option>
+                                    <option>Filhote</option>
+                                    <option>Adulto</option>
+                                    <option>Idoso</option>
+                                    <option>Sem preferência</option>
+                                </select>
+                            </div>
+                            <div class="campo">
+                                <label for="outros-animais">Já possui outros animais?</label>
+                                <select id="outros-animais">
+                                    <option value="">Selecione</option>
+                                    <option>Não</option>
+                                    <option>Sim, cão(ões)</option>
+                                    <option>Sim, gato(s)</option>
+                                    <option>Sim, outros</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="campo campo-full">
+                            <label for="motivo">Por que você deseja adotar?</label>
+                            <textarea id="motivo" rows="4" placeholder="Conte um pouco sobre sua motivação para adotar..."></textarea>
+                        </div>
+
+                        <h3 class="secao-titulo">Documentação</h3>
+
+                        <div class="form-grid">
+                            <div class="campo">
+                                <label for="doc-rg">Documento de Identidade (RG/CNH)</label>
+                                <input type="file" id="doc-rg" accept=".pdf,.jpg,.jpeg,.png">
+                            </div>
+                            <div class="campo">
+                                <label for="doc-residencia">Comprovante de Residência</label>
+                                <input type="file" id="doc-residencia" accept=".pdf,.jpg,.jpeg,.png">
+                            </div>
+                        </div>
+
+                        <div class="campo-checkbox">
+                            <input type="checkbox" id="termo" required>
+                            <label for="termo">Declaro que li e aceito os <a href="#">Termos de Adoção Responsável</a> e me comprometo a oferecer um lar seguro e amoroso ao animal.</label>
+                        </div>
+
+                        <button type="submit" class="btn-cadastrar">Enviar Formulário</button>
+                        <br><br>
+                        <a href="telainicial.html" class="btn-voltar">← Voltar</a>
+
+                    </form>
+                </div>
+            </main>
+
+        </div>
+
+        <footer></footer>
+    </div>
+</body>
+</html>

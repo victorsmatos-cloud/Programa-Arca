@@ -1,0 +1,312 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f0f2f5;
+    color: #343434;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #B9E0FF;
+    padding: 0 32px;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header-esquerda {
+    display: flex;
+    align-items: center;
+}
+
+header span {
+    font-size: 21px;
+    font-weight: 900;
+    color: #1a2d52;
+    letter-spacing: 4px;
+}
+
+.header-sair {
+    font-size: 13px;
+    color: #1a2d52;
+    border: 1px solid rgba(26,45,82,0.3);
+    border-radius: 6px;
+    padding: 6px 14px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.header-sair:hover {
+    background: #c0392b;
+    border-color: #c0392b;
+    color: #fff;
+}
+
+.menu-lateral {
+    display: flex;
+    flex: 1;
+}
+
+aside {
+    width: 220px;
+    min-height: calc(100vh - 64px);
+    background: #D6EFE0;
+    padding: 30px 0;
+    flex-shrink: 0;
+}
+
+aside ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 16px;
+}
+
+aside ul li {
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: background 0.2s;
+}
+
+aside ul li a {
+    display: block;
+    padding: 12px 16px;
+    color: #1a3a28;
+    text-decoration: none;
+    transition: padding-left 0.2s;
+}
+
+aside ul li:hover,
+aside ul li.ativo {
+    background: #FDCFA7;
+}
+
+aside ul li:hover a,
+aside ul li.ativo a {
+    color: #7a3a00;
+    padding-left: 22px;
+}
+
+.conteudo-principal {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.cards {
+    background: #fff;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 800px;
+    height: fit-content;
+}
+
+.cards h1 {
+    color: #1a2d52;
+    font-size: 24px;
+    font-weight: 900;
+    border-bottom: 3px solid #FDCFA7;
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+}
+
+.subtitulo {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+/* AVISO */
+.aviso {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: #f8faff;
+    border: 2px solid #B9E0FF;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+}
+
+.aviso-icone {
+    font-size: 18px;
+    color: #1a2d52;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.aviso p {
+    font-size: 13px;
+    color: #444;
+    line-height: 1.6;
+}
+
+/* SEÇÃO */
+.secao-titulo {
+    color: #1a2d52;
+    font-size: 15px;
+    font-weight: 700;
+    border-left: 4px solid #FDCFA7;
+    padding-left: 10px;
+    margin: 28px 0 16px;
+}
+
+/* FORM */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.campo-full {
+    grid-column: 1 / -1;
+    margin-top: 4px;
+}
+
+.campo label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a2d52;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    height: 46px;
+    padding: 0 14px;
+    border: 2px solid #B9E0FF;
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+    color: #343434;
+    transition: border-color 0.2s;
+    background: #fff;
+}
+
+.campo textarea {
+    height: auto;
+    padding: 12px 14px;
+    resize: vertical;
+}
+
+.campo input[type="file"] {
+    height: auto;
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    border-color: #1a2d52;
+}
+
+.campo input::placeholder,
+.campo textarea::placeholder {
+    color: #aaa;
+}
+
+/* CHECKBOX */
+.campo-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 24px;
+    margin-bottom: 4px;
+    padding: 16px;
+    background: #f8faff;
+    border: 2px solid #B9E0FF;
+    border-radius: 10px;
+}
+
+.campo-checkbox input[type="checkbox"] {
+    margin-top: 2px;
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.campo-checkbox label {
+    font-size: 13px;
+    color: #444;
+    line-height: 1.6;
+    cursor: pointer;
+}
+
+.campo-checkbox label a {
+    color: #1a2d52;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+/* BOTÕES */
+.btn-cadastrar {
+    width: 100%;
+    height: 50px;
+    background: #1a2d52;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 24px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-cadastrar:hover {
+    background: #FDCFA7;
+    color: #7a3a00;
+}
+
+.btn-voltar {
+    display: inline-block;
+    font-size: 13px;
+    color: #1a2d52;
+    border: 1px solid #B9E0FF;
+    border-radius: 6px;
+    padding: 6px 14px;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.btn-voltar:hover {
+    background: #B9E0FF;
+}
+
+footer {
+    background: #B9E0FF;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1a2d52;
+    font-size: 13px;
+}

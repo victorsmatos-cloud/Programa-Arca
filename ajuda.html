@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajuda - ARCA</title>
+    <link rel="stylesheet" href="style-ajuda.css">
+</head>
+<body>
+    <div class="container">
+
+        <header>
+            <div class="header-esquerda">
+                <span>ARCA</span>
+            </div>
+            <button class="header-sair">Sair</button>
+        </header>
+
+        <div class="menu-lateral">
+
+            <aside>
+                <ul>
+                    <li><a href="telainicial.html">&#127968; Home</a></li>
+                    <li><a href="sobre-nos.html">&#8505; Sobre Nós</a></li>
+                    <li><a href="adocao.html">&#10084; Adoção</a></li>
+                    <li><a href="agendamento.html">&#128197; Agendamentos</a></li>
+                    <li><a href="#">&#9888; Emergências</a></li>
+                    <li><a href="eventos.html">&#11088; Eventos</a></li>
+                    <li><a href="processos.html">&#128196; Processos</a></li>
+                    <li class="ativo"><a href="ajuda.html">&#10067; Ajuda</a></li>
+                    <li><a href="perfil.html">&#128100; Perfil</a></li>
+                </ul>
+            </aside>
+
+            <main class="conteudo-principal">
+                <div class="cards">
+                    <h1>&#10067; Central de Ajuda</h1>
+                    <p class="subtitulo">Encontre respostas para suas dúvidas ou entre em contato com nossa equipe.</p>
+
+                    <!-- CONTATO RÁPIDO -->
+                    <div class="contato-grid">
+                        <div class="contato-card">
+                            <span class="contato-icone">&#128222;</span>
+                            <div>
+                                <h4>Telefone</h4>
+                                <p>(27) 3291-0000</p>
+                            </div>
+                        </div>
+                        <div class="contato-card">
+                            <span class="contato-icone">&#128140;</span>
+                            <div>
+                                <h4>E-mail</h4>
+                                <p>arca@serra.es.gov.br</p>
+                            </div>
+                        </div>
+                        <div class="contato-card">
+                            <span class="contato-icone">&#128336;</span>
+                            <div>
+                                <h4>Atendimento</h4>
+                                <p>Seg–Sex, 8h às 17h</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PERGUNTAS FREQUENTES -->
+                    <h2>Perguntas Frequentes</h2>
+
+                    <div class="faq-lista">
+
+                        <div class="faq-item">
+                            <button class="faq-pergunta" onclick="toggleFaq(this)">
+                                <span>Como faço para agendar uma castração gratuita?</span>
+                                <span class="faq-icone">&#43;</span>
+                            </button>
+                            <div class="faq-resposta">
+                                <p>Acesse o menu <strong>Agendamentos</strong>, informe seu endereço para encontrar clínicas parceiras próximas e clique em "Agendar aqui". Preencha o formulário com seus dados e os dados do animal. Você receberá uma confirmação por e-mail.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-pergunta" onclick="toggleFaq(this)">
+                                <span>Quais documentos preciso para adotar um animal?</span>
+                                <span class="faq-icone">&#43;</span>
+                            </button>
+                            <div class="faq-resposta">
+                                <p>Para adotar, você precisará de: documento de identidade (RG ou CNH), comprovante de residência atualizado (últimos 3 meses) e ser maior de 18 anos. Após o envio do formulário, nossa equipe fará uma visita domiciliar para validar as condições de moradia.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-pergunta" onclick="toggleFaq(this)">
+                                <span>Como acompanho meu processo de adoção?</span>
+                                <span class="faq-icone">&#43;</span>
+                            </button>
+                            <div class="faq-resposta">
+                                <p>Acesse o menu <strong>Processos</strong> para visualizar todos os seus processos ativos. Você pode acompanhar cada etapa em tempo real, desde o envio do formulário até a conclusão da adoção.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-pergunta" onclick="toggleFaq(this)">
+                                <span>A castração é realmente gratuita? Tem algum custo?</span>
+                                <span class="faq-icone">&#43;</span>
+                            </button>
+                            <div class="faq-resposta">
+                                <p>Sim, o serviço de castração é 100% gratuito para moradores do município da Serra. O Programa ARCA é uma iniciativa da Prefeitura Municipal e não há nenhum custo para o tutor. As vagas são limitadas e sujeitas à disponibilidade.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-pergunta" onclick="toggleFaq(this)">
+                                <span>Como denunciar um animal em situação de risco ou abandono?</span>
+                                <span class="faq-icone">&#43;</span>
+                            </button>
+                            <div class="faq-resposta">
+                                <p>Acesse o menu <strong>Emergências</strong> para registrar uma denúncia. Informe o endereço e descreva a situação com o máximo de detalhes. Nossa equipe será acionada o mais rápido possível. Em casos urgentes, ligue para (27) 3291-0000.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-pergunta" onclick="toggleFaq(this)">
+                                <span>Posso alterar ou cancelar um agendamento?</span>
+                                <span class="faq-icone">&#43;</span>
+                            </button>
+                            <div class="faq-resposta">
+                                <p>Sim. Acesse o menu <strong>Processos</strong>, localize o agendamento desejado e clique em "Ver detalhes". De lá, você poderá solicitar alteração de data ou cancelamento com até 24 horas de antecedência.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-pergunta" onclick="toggleFaq(this)">
+                                <span>Quais bairros são atendidos pelo Programa ARCA?</span>
+                                <span class="faq-icone">&#43;</span>
+                            </button>
+                            <div class="faq-resposta">
+                                <p>O programa atende todos os bairros do município da Serra — ES, com cobertura em mais de 40 localidades. A disponibilidade de clínicas parceiras varia por região. Informe seu endereço na tela de agendamentos para ver as opções disponíveis na sua área.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- FORMULÁRIO DE CONTATO -->
+                    <h2 style="margin-top: 36px;">Ainda tem dúvidas? Fale conosco</h2>
+
+                    <form class="form-contato" id="form-contato">
+                        <div class="form-grid">
+                            <div class="campo">
+                                <label for="contato-nome">Nome</label>
+                                <input type="text" id="contato-nome" placeholder="Seu nome">
+                            </div>
+                            <div class="campo">
+                                <label for="contato-email">E-mail</label>
+                                <input type="email" id="contato-email" placeholder="Seu e-mail">
+                            </div>
+                        </div>
+                        <div class="campo" style="margin-top: 16px;">
+                            <label for="contato-assunto">Assunto</label>
+                            <select id="contato-assunto">
+                                <option value="">Selecione o assunto</option>
+                                <option>Agendamento de castração</option>
+                                <option>Processo de adoção</option>
+                                <option>Denúncia de maus-tratos</option>
+                                <option>Dúvida sobre o sistema</option>
+                                <option>Outros</option>
+                            </select>
+                        </div>
+                        <div class="campo" style="margin-top: 16px;">
+                            <label for="contato-mensagem">Mensagem</label>
+                            <textarea id="contato-mensagem" rows="4" placeholder="Descreva sua dúvida ou situação..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-enviar">Enviar Mensagem</button>
+                    </form>
+
+                    <a href="telainicial.html" class="btn-voltar">← Voltar</a>
+                </div>
+            </main>
+
+        </div>
+
+        <footer></footer>
+    </div>
+
+    <script>
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            const isAberto = item.classList.contains('aberto');
+
+            document.querySelectorAll('.faq-item.aberto').forEach(el => {
+                el.classList.remove('aberto');
+                el.querySelector('.faq-icone').textContent = '+';
+            });
+
+            if (!isAberto) {
+                item.classList.add('aberto');
+                btn.querySelector('.faq-icone').textContent = '−';
+            }
+        }
+    </script>
+</body>
+</html>

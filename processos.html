@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processos - ARCA</title>
+    <link rel="stylesheet" href="style-processos.css">
+</head>
+<body>
+    <div class="container">
+
+        <header>
+            <div class="header-esquerda">
+                <span>ARCA</span>
+            </div>
+            <button class="header-sair">Sair</button>
+        </header>
+
+        <div class="menu-lateral">
+
+            <aside>
+                <ul>
+                    <li><a href="telainicial.html">&#127968; Home</a></li>
+                    <li><a href="sobre-nos.html">&#8505; Sobre Nós</a></li>
+                    <li><a href="#">&#10084; Adoção</a></li>
+                    <li><a href="agendamento.html">&#128197; Agendamentos</a></li>
+                    <li><a href="#">&#9888; Emergências</a></li>
+                    <li><a href="eventos.html">&#11088; Eventos</a></li>
+                    <li class="ativo"><a href="processos.html">&#128196; Processos</a></li>
+                    <li><a href="ajuda.html">&#10067; Ajuda</a></li>
+                    <li><a href="perfil.html">&#128100; Perfil</a></li>
+                </ul>
+            </aside>
+
+            <main class="conteudo-principal">
+                <div class="cards">
+                    <h1>Meus Processos</h1>
+                    <p class="subtitulo">Acompanhe o andamento das suas solicitações e processos abertos.</p>
+
+                    <div class="resumo-grid">
+                        <div class="resumo-card azul">
+                            <span class="resumo-num">3</span>
+                            <span class="resumo-label">Em andamento</span>
+                        </div>
+                        <div class="resumo-card verde">
+                            <span class="resumo-num">5</span>
+                            <span class="resumo-label">Concluídos</span>
+                        </div>
+                        <div class="resumo-card laranja">
+                            <span class="resumo-num">1</span>
+                            <span class="resumo-label">Aguardando documentos</span>
+                        </div>
+                    </div>
+
+                    <h2>Processos Ativos</h2>
+
+                    <div class="processos-lista">
+
+                        <div class="processo-card">
+                            <div class="processo-header">
+                                <div>
+                                    <span class="processo-numero">#2025-001482</span>
+                                    <h3>Solicitação de Castração Gratuita</h3>
+                                </div>
+                                <span class="status status-andamento">Em andamento</span>
+                            </div>
+                            <div class="processo-timeline">
+                                <div class="step concluido">
+                                    <div class="step-icone">&#10003;</div>
+                                    <div class="step-info">
+                                        <span class="step-titulo">Solicitação enviada</span>
+                                        <span class="step-data">10/06/2025</span>
+                                    </div>
+                                </div>
+                                <div class="step-linha concluido"></div>
+                                <div class="step concluido">
+                                    <div class="step-icone">&#10003;</div>
+                                    <div class="step-info">
+                                        <span class="step-titulo">Documentação aprovada</span>
+                                        <span class="step-data">12/06/2025</span>
+                                    </div>
+                                </div>
+                                <div class="step-linha ativo"></div>
+                                <div class="step ativo">
+                                    <div class="step-icone">&#8987;</div>
+                                    <div class="step-info">
+                                        <span class="step-titulo">Aguardando agendamento</span>
+                                        <span class="step-data">Pendente</span>
+                                    </div>
+                                </div>
+                                <div class="step-linha"></div>
+                                <div class="step">
+                                    <div class="step-icone">&#128197;</div>
+                                    <div class="step-info">
+                                        <span class="step-titulo">Cirurgia realizada</span>
+                                        <span class="step-data">—</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="processo-footer">
+                                <a href="agendamento.html" class="btn-acao">Agendar agora</a>
+                            </div>
+                        </div>
+
+                        <div class="processo-card">
+                            <div class="processo-header">
+                                <div>
+                                    <span class="processo-numero">#2025-001391</span>
+                                    <h3>Processo de Adoção — Bolinha</h3>
+                                </div>
+                                <span class="status status-documentos">Aguardando documentos</span>
+                            </div>
+                            <div class="processo-timeline">
+                                <div class="step concluido">
+                                    <div class="step-icone">&#10003;</div>
+                                    <div class="step-info">
+                                        <span class="step-titulo">Formulário enviado</span>
+                                        <span class="step-data">05/06/2025</span>
+                                    </div>
+                                </div>
+                                <div class="step-linha ativo"></div>
+                                <div class="step ativo">
+                                    <div class="step-icone">&#9888;</div>
+                                    <div class="step-info">
+                                        <span class="step-titulo">Envio de documentação pendente</span>
+                                        <span class="step-data">Aguardando</span>
+                                    </div>
+                                </div>
+                                <div class="step-linha"></div>
+                                <div class="step">
+                                    <div class="step-icone">&#128269;</div>
+                                    <div class="step-info">
+                                        <span class="step-titulo">Visita domiciliar</span>
+                                        <span class="step-data">—</span>
+                                    </div>
+                                </div>
+                                <div class="step-linha"></div>
+                                <div class="step">
+                                    <div class="step-icone">&#10084;</div>
+                                    <div class="step-info">
+                                        <span class="step-titulo">Adoção concluída</span>
+                                        <span class="step-data">—</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="processo-footer">
+                                <a href="#" class="btn-acao">Enviar documentos</a>
+                            </div>
+                        </div>
+
+                        <div class="processo-card">
+                            <div class="processo-header">
+                                <div>
+                                    <span class="processo-numero">#2025-001278</span>
+                                    <h3>Resgate de Animal — Rua das Palmeiras</h3>
+                                </div>
+                                <span class="status status-andamento">Em andamento</span>
+                            </div>
+                            <div class="processo-timeline">
+                                <div class="step concluido">
+                                    <div class="step-icone">&#10003;</div>
+                                    <div class="step-info">
+                                        <span class="step-titulo">Denúncia registrada</span>
+                                        <span class="step-data">01/06/2025</span>
+                                    </div>
+                                </div>
+                                <div class="step-linha concluido"></div>
+                                <div class="step concluido">
+                                    <div class="step-icone">&#10003;</div>
+                                    <div class="step-info">
+                                        <span class="step-titulo">Equipe acionada</span>
+                                        <span class="step-data">02/06/2025</span>
+                                    </div>
+                                </div>
+                                <div class="step-linha ativo"></div>
+                                <div class="step ativo">
+                                    <div class="step-icone">&#8987;</div>
+                                    <div class="step-info">
+                                        <span class="step-titulo">Animal em tratamento</span>
+                                        <span class="step-data">Em andamento</span>
+                                    </div>
+                                </div>
+                                <div class="step-linha"></div>
+                                <div class="step">
+                                    <div class="step-icone">&#128516;</div>
+                                    <div class="step-info">
+                                        <span class="step-titulo">Encaminhamento para adoção</span>
+                                        <span class="step-data">—</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <h2 style="margin-top: 32px;">Processos Concluídos</h2>
+
+                    <div class="processos-lista">
+                        <div class="processo-card concluido-card">
+                            <div class="processo-header">
+                                <div>
+                                    <span class="processo-numero">#2024-009821</span>
+                                    <h3>Castração Gratuita — Luna</h3>
+                                </div>
+                                <span class="status status-concluido">Concluído</span>
+                            </div>
+                            <p class="processo-concluido-info">&#128197; Concluído em 15/11/2024 · Clínica Veterinária Amigo Fiel</p>
+                        </div>
+                        <div class="processo-card concluido-card">
+                            <div class="processo-header">
+                                <div>
+                                    <span class="processo-numero">#2024-007643</span>
+                                    <h3>Adoção Consciente — Mel</h3>
+                                </div>
+                                <span class="status status-concluido">Concluído</span>
+                            </div>
+                            <p class="processo-concluido-info">&#10084; Concluído em 20/09/2024 · Adotada com sucesso</p>
+                        </div>
+                    </div>
+
+                    <a href="telainicial.html" class="btn-voltar">← Voltar</a>
+                </div>
+            </main>
+
+        </div>
+
+        <footer></footer>
+    </div>
+</body>
+</html>

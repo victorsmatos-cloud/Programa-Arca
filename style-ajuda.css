@@ -1,0 +1,353 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f0f2f5;
+    color: #343434;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #B9E0FF;
+    padding: 0 32px;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header-esquerda {
+    display: flex;
+    align-items: center;
+}
+
+header span {
+    font-size: 21px;
+    font-weight: 900;
+    color: #1a2d52;
+    letter-spacing: 4px;
+}
+
+.header-sair {
+    font-size: 13px;
+    color: #1a2d52;
+    border: 1px solid rgba(26,45,82,0.3);
+    border-radius: 6px;
+    padding: 6px 14px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.header-sair:hover {
+    background: #c0392b;
+    border-color: #c0392b;
+    color: #fff;
+}
+
+.menu-lateral {
+    display: flex;
+    flex: 1;
+}
+
+aside {
+    width: 220px;
+    min-height: calc(100vh - 64px);
+    background: #D6EFE0;
+    padding: 30px 0;
+    flex-shrink: 0;
+}
+
+aside ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 16px;
+}
+
+aside ul li {
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: background 0.2s;
+}
+
+aside ul li a {
+    display: block;
+    padding: 12px 16px;
+    color: #1a3a28;
+    text-decoration: none;
+    transition: padding-left 0.2s;
+}
+
+aside ul li:hover,
+aside ul li.ativo {
+    background: #FDCFA7;
+}
+
+aside ul li:hover a,
+aside ul li.ativo a {
+    color: #7a3a00;
+    padding-left: 22px;
+}
+
+.conteudo-principal {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.cards {
+    background: #fff;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 860px;
+    height: fit-content;
+}
+
+.cards h1 {
+    color: #1a2d52;
+    font-size: 24px;
+    font-weight: 900;
+    border-bottom: 3px solid #FDCFA7;
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+}
+
+.cards h2 {
+    color: #1a2d52;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.subtitulo {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 28px;
+}
+
+/* CONTATO RÁPIDO */
+.contato-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 36px;
+}
+
+.contato-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #f8faff;
+    border: 2px solid #B9E0FF;
+    border-radius: 12px;
+    padding: 18px;
+}
+
+.contato-icone {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.contato-card h4 {
+    font-size: 12px;
+    font-weight: 700;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 3px;
+}
+
+.contato-card p {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a2d52;
+}
+
+/* FAQ */
+.faq-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.faq-item {
+    border: 2px solid #e4e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+}
+
+.faq-item.aberto {
+    border-color: #B9E0FF;
+}
+
+.faq-pergunta {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a2d52;
+    transition: background 0.2s;
+}
+
+.faq-pergunta:hover {
+    background: #f8faff;
+}
+
+.faq-item.aberto .faq-pergunta {
+    background: #f8faff;
+}
+
+.faq-icone {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a2d52;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.faq-resposta {
+    display: none;
+    padding: 0 20px 18px;
+    background: #f8faff;
+}
+
+.faq-resposta p {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.7;
+}
+
+.faq-resposta p strong {
+    color: #1a2d52;
+}
+
+.faq-item.aberto .faq-resposta {
+    display: block;
+}
+
+/* FORMULÁRIO DE CONTATO */
+.form-contato {
+    margin-top: 4px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.campo label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a2d52;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    height: 46px;
+    padding: 0 14px;
+    border: 2px solid #B9E0FF;
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+    color: #343434;
+    transition: border-color 0.2s;
+    background: #fff;
+}
+
+.campo textarea {
+    height: auto;
+    padding: 12px 14px;
+    resize: vertical;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    border-color: #1a2d52;
+}
+
+.campo input::placeholder,
+.campo textarea::placeholder {
+    color: #aaa;
+}
+
+.btn-enviar {
+    margin-top: 20px;
+    height: 46px;
+    padding: 0 28px;
+    background: #1a2d52;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-enviar:hover {
+    background: #FDCFA7;
+    color: #7a3a00;
+}
+
+.btn-voltar {
+    display: inline-block;
+    margin-top: 28px;
+    font-size: 13px;
+    color: #1a2d52;
+    border: 1px solid #B9E0FF;
+    border-radius: 6px;
+    padding: 6px 14px;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.btn-voltar:hover {
+    background: #B9E0FF;
+}
+
+footer {
+    background: #B9E0FF;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1a2d52;
+    font-size: 13px;
+}

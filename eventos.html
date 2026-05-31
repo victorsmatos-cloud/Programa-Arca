@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos - ARCA</title>
+    <link rel="stylesheet" href="style-eventos.css">
+</head>
+<body>
+    <div class="container">
+
+        <header>
+            <div class="header-esquerda">
+                <span>ARCA</span>
+            </div>
+            <button class="header-sair">Sair</button>
+        </header>
+
+        <div class="menu-lateral">
+
+            <aside>
+                <ul>
+                    <li><a href="telainicial.html">&#127968; Home</a></li>
+                    <li><a href="sobre-nos.html">&#8505; Sobre Nós</a></li>
+                    <li><a href="#">&#10084; Adoção</a></li>
+                    <li><a href="agendamento.html">&#128197; Agendamentos</a></li>
+                    <li><a href="#">&#9888; Emergências</a></li>
+                    <li class="ativo"><a href="eventos.html">&#11088; Eventos</a></li>
+                    <li><a href="processos.html">&#128196; Processos</a></li>
+                    <li><a href="ajuda.html">&#10067; Ajuda</a></li>
+                    <li><a href="perfil.html">&#128100; Perfil</a></li>
+                </ul>
+            </aside>
+
+            <main class="conteudo-principal">
+                <div class="cards">
+                    <h1>Eventos</h1>
+                    <p class="subtitulo">Confira os próximos eventos e feiras de adoção do Programa ARCA.</p>
+
+                    <div class="filtros">
+                        <button class="filtro-btn ativo" onclick="filtrar(this, 'todos')">Todos</button>
+                        <button class="filtro-btn" onclick="filtrar(this, 'feira')">Feiras de Adoção</button>
+                        <button class="filtro-btn" onclick="filtrar(this, 'castração')">Campanhas de Castração</button>
+                        <button class="filtro-btn" onclick="filtrar(this, 'educação')">Educação Ambiental</button>
+                    </div>
+
+                    <div class="eventos-lista" id="eventos-lista">
+
+                        <div class="evento-card" data-tipo="feira">
+                            <div class="evento-data">
+                                <span class="dia">14</span>
+                                <span class="mes">JUN</span>
+                            </div>
+                            <div class="evento-info">
+                                <span class="evento-tipo tipo-feira">Feira de Adoção</span>
+                                <h3>Feira de Adoção — Parque da Cidade</h3>
+                                <p>&#128205; Parque da Cidade, Serra — ES</p>
+                                <p>&#128336; 09h às 16h</p>
+                                <p class="evento-desc">Venha conhecer os animais disponíveis para adoção! Traga RG e comprovante de residência.</p>
+                            </div>
+                            <div class="evento-acao">
+                                <span class="evento-vagas">Entrada gratuita</span>
+                                <a href="#" class="btn-detalhes">Ver detalhes</a>
+                            </div>
+                        </div>
+
+                        <div class="evento-card" data-tipo="castração">
+                            <div class="evento-data">
+                                <span class="dia">21</span>
+                                <span class="mes">JUN</span>
+                            </div>
+                            <div class="evento-info">
+                                <span class="evento-tipo tipo-castracao">Campanha de Castração</span>
+                                <h3>Mutirão de Castração — Bairro Jardim Carapina</h3>
+                                <p>&#128205; UBS Jardim Carapina, Serra — ES</p>
+                                <p>&#128336; 08h às 12h</p>
+                                <p class="evento-desc">Castração gratuita para cães e gatos. Agendamento obrigatório pelo sistema.</p>
+                            </div>
+                            <div class="evento-acao">
+                                <span class="evento-vagas vagas-limitadas">30 vagas</span>
+                                <a href="agendamento.html" class="btn-detalhes">Agendar</a>
+                            </div>
+                        </div>
+
+                        <div class="evento-card" data-tipo="educação">
+                            <div class="evento-data">
+                                <span class="dia">28</span>
+                                <span class="mes">JUN</span>
+                            </div>
+                            <div class="evento-info">
+                                <span class="evento-tipo tipo-educacao">Educação Ambiental</span>
+                                <h3>Palestra: Guarda Responsável de Animais</h3>
+                                <p>&#128205; Centro Cultural da Serra, Serra — ES</p>
+                                <p>&#128336; 14h às 17h</p>
+                                <p class="evento-desc">Palestra sobre bem-estar animal, prevenção de abandono e guarda responsável.</p>
+                            </div>
+                            <div class="evento-acao">
+                                <span class="evento-vagas">Entrada gratuita</span>
+                                <a href="#" class="btn-detalhes">Ver detalhes</a>
+                            </div>
+                        </div>
+
+                        <div class="evento-card" data-tipo="feira">
+                            <div class="evento-data">
+                                <span class="dia">05</span>
+                                <span class="mes">JUL</span>
+                            </div>
+                            <div class="evento-info">
+                                <span class="evento-tipo tipo-feira">Feira de Adoção</span>
+                                <h3>Feira de Adoção — Shopping Moxuara</h3>
+                                <p>&#128205; Shopping Moxuara, Cariacica — ES</p>
+                                <p>&#128336; 10h às 18h</p>
+                                <p class="evento-desc">Grande feira com mais de 50 animais disponíveis para adoção. Venha nos visitar!</p>
+                            </div>
+                            <div class="evento-acao">
+                                <span class="evento-vagas">Entrada gratuita</span>
+                                <a href="#" class="btn-detalhes">Ver detalhes</a>
+                            </div>
+                        </div>
+
+                        <div class="evento-card" data-tipo="castração">
+                            <div class="evento-data">
+                                <span class="dia">12</span>
+                                <span class="mes">JUL</span>
+                            </div>
+                            <div class="evento-info">
+                                <span class="evento-tipo tipo-castracao">Campanha de Castração</span>
+                                <h3>Mutirão de Castração — Bairro Nova Carapina</h3>
+                                <p>&#128205; Escola Municipal Nova Carapina, Serra — ES</p>
+                                <p>&#128336; 08h às 12h</p>
+                                <p class="evento-desc">Castração gratuita para moradores do bairro. Apresentar comprovante de residência.</p>
+                            </div>
+                            <div class="evento-acao">
+                                <span class="evento-vagas vagas-limitadas">50 vagas</span>
+                                <a href="agendamento.html" class="btn-detalhes">Agendar</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <a href="telainicial.html" class="btn-voltar">← Voltar</a>
+                </div>
+            </main>
+
+        </div>
+
+        <footer></footer>
+    </div>
+
+    <script>
+        function filtrar(btn, tipo) {
+            document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('ativo'));
+            btn.classList.add('ativo');
+
+            document.querySelectorAll('.evento-card').forEach(card => {
+                if (tipo === 'todos' || card.dataset.tipo === tipo) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
