@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Adoção - ARCA</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
+        body { background: #f0f2f5; color: #343434; }
+        .container { display: flex; flex-direction: column; min-height: 100vh; }
+
+        header {
+            display: flex; align-items: center; justify-content: space-between;
+            background: #B9E0FF; padding: 0 32px; height: 64px;
+            position: sticky; top: 0; z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        header span { font-size: 21px; font-weight: 900; color: #1a2d52; letter-spacing: 4px; }
+        .header-sair {
+            font-size: 13px; color: #1a2d52; border: 1px solid rgba(26,45,82,0.3);
+            border-radius: 6px; padding: 6px 14px; background: transparent; cursor: pointer;
+        }
+        .header-sair:hover { background: #c0392b; border-color: #c0392b; color: #fff; }
+
+        .menu-lateral { display: flex; flex: 1; }
+
+        aside {
+            width: 220px; min-height: calc(100vh - 64px);
+            background: #D6EFE0; padding: 30px 0; flex-shrink: 0;
+        }
+        aside ul { list-style: none; display: flex; flex-direction: column; gap: 4px; padding: 0 16px; }
+        aside ul li { font-size: 14px; font-weight: 500; border-radius: 10px; transition: background 0.2s; }
+        aside ul li a { display: block; padding: 12px 16px; color: #1a3a28; text-decoration: none; transition: padding-left 0.2s; }
+        aside ul li:hover, aside ul li.ativo { background: #FDCFA7; }
+        aside ul li:hover a, aside ul li.ativo a { color: #7a3a00; padding-left: 22px; }
+
+        .conteudo-principal { flex: 1; padding: 36px 40px; display: flex; justify-content: center; }
+
+        
+        .card {
+            background: #fff; border-radius: 16px; padding: 36px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            width: 100%; max-width: 700px; height: fit-content;
+        }
+
+        
+        .animal-destaque {
+            display: flex; align-items: center; gap: 16px;
+            background: linear-gradient(135deg, #D6EFE0 0%, #B9E0FF 100%);
+            border-radius: 14px; padding: 16px 20px; margin-bottom: 28px;
+        }
+        .animal-avatar {
+            width: 56px; height: 56px; border-radius: 50%;
+            background: #fff; display: flex; align-items: center;
+            justify-content: center; font-size: 28px; flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .animal-destaque-info h2 { font-size: 17px; font-weight: 800; color: #1a2d52; }
+        .animal-destaque-info p { font-size: 13px; color: #555; margin-top: 2px; }
+
+        
+        .card h1 {
+            color: #1a2d52; font-size: 22px; font-weight: 900;
+            border-bottom: 3px solid #FDCFA7; padding-bottom: 10px; margin-bottom: 6px;
+        }
+        .subtitulo { color: #777; font-size: 14px; margin-bottom: 4px; }
+
+        .secao-titulo {
+            color: #1a2d52; font-size: 14px; font-weight: 700;
+            border-left: 4px solid #FDCFA7; padding-left: 10px;
+            margin: 24px 0 14px;
+        }
+
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+        .campo { display: flex; flex-direction: column; gap: 6px; margin-bottom: 4px; }
+        .campo label { font-size: 13px; font-weight: 600; color: #1a2d52; }
+        .campo input, .campo select, .campo textarea {
+            padding: 0 14px; height: 46px;
+            border: 2px solid #B9E0FF; border-radius: 10px;
+            font-size: 14px; outline: none; color: #343434;
+            transition: border-color 0.2s; background: #fff;
+        }
+        .campo textarea { height: auto; padding: 12px 14px; resize: vertical; font-family: inherit; line-height: 1.6; }
+        .campo input:focus, .campo select:focus, .campo textarea:focus { border-color: #1a2d52; }
+        .campo input::placeholder, .campo textarea::placeholder { color: #aaa; }
+
+        
+        .docs-lista { display: flex; flex-direction: column; gap: 8px; }
+        .doc-item {
+            border: 2px solid #B9E0FF; border-radius: 12px; overflow: hidden;
+            transition: border-color 0.2s;
+        }
+        .doc-item:has(.doc-body:not([hidden])) { border-color: #1a2d52; }
+
+        .doc-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 14px 16px; cursor: pointer; user-select: none;
+            background: #fff; transition: background 0.2s;
+        }
+        .doc-header:hover { background: #f8faff; }
+        .doc-header-left { display: flex; align-items: center; gap: 10px; }
+        .doc-icone { font-size: 18px; }
+        .doc-nome { font-size: 14px; font-weight: 600; color: #1a2d52; }
+        .doc-nota { font-size: 11px; color: #999; margin-top: 1px; }
+        .doc-seta {
+            font-size: 11px; color: #999; transition: transform 0.2s;
+        }
+        .doc-item.aberto .doc-seta { transform: rotate(180deg); }
+
+        .doc-body {
+            padding: 0 16px 14px;
+            background: #fafcff;
+        }
+        .doc-body[hidden] { display: none; }
+        .upload-area-doc {
+            border: 2px dashed #B9E0FF; border-radius: 10px;
+            padding: 16px; display: flex; flex-direction: column;
+            align-items: center; gap: 4px; cursor: pointer;
+            background: #fff; font-size: 13px; font-weight: 600;
+            color: #1a2d52; transition: all 0.2s;
+        }
+        .upload-area-doc:hover { border-color: #1a2d52; background: #f0f6ff; }
+        .upload-area-doc input { display: none; }
+        .upload-sub { font-size: 11px; color: #aaa; font-weight: 400; }
+
+        
+        .check-wrap {
+            display: flex; align-items: center; gap: 8px;
+            padding: 10px 0;
+        }
+        .check-wrap input[type=checkbox] { width: 18px; height: 18px; accent-color: #1a2d52; cursor: pointer; }
+        .check-wrap label { font-size: 13px; color: #555; cursor: pointer; line-height: 1.4; }
+
+        .btn-adotar {
+            width: 100%; height: 48px; background: #1a2d52;
+            color: #FDCFA7; border: none; border-radius: 10px;
+            font-size: 14px; font-weight: 700; cursor: pointer;
+            margin-top: 24px; transition: background 0.2s;
+        }
+        .btn-adotar:hover { background: #142240; }
+
+        footer { background: #B9E0FF; height: 50px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <span>ARCA</span>
+        <button class="header-sair">Sair</button>
+    </header>
+
+    <div class="menu-lateral">
+        <aside>
+            <ul>
+                <li><a href="telainicial.html">&#127968; Home</a></li>
+                <li><a href="sobre-nós.html">&#8505; Sobre Nós</a></li>
+                <li class="ativo"><a href="adocao.html">&#10084; Adoção</a></li>
+                <li><a href="agendamento.html">&#128197; Agendamentos</a></li>
+                <li><a href="emergencia.html">&#9888; Emergências</a></li>
+                <li><a href="eventos.html">&#11088; Eventos</a></li>
+                <li><a href="processos.html">&#128196; Processos</a></li>
+                <li><a href="ajuda.html">&#10067; Ajuda</a></li>
+                <li><a href="perfil.html">&#128100; Perfil</a></li>
+            </ul>
+        </aside>
+
+        <main class="conteudo-principal">
+            <div class="card">
+
+                <div class="animal-destaque">
+                    <div class="animal-avatar">🐶</div>
+                    <div class="animal-destaque-info">
+                        <h2>Adotando: Cleiton</h2>
+                        <p>Cachorro · Macho · Filhote · Beagle mix</p>
+                    </div>
+                </div>
+
+                <h1>&#128196; Formulário de Adoção</h1>
+                <p class="subtitulo">Preencha os dados abaixo para iniciar o processo.</p>
+
+                <h3 class="secao-titulo">Seus Dados</h3>
+                <div class="form-grid">
+                    <div class="campo">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" placeholder="Seu nome completo">
+                    </div>
+                    <div class="campo">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" placeholder="seu@email.com">
+                    </div>
+                    <div class="campo">
+                        <label for="cpf">CPF / CNPJ</label>
+                        <input type="text" id="cpf" placeholder="000.000.000-00">
+                    </div>
+                    <div class="campo">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" placeholder="(00) 00000-0000">
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="endereco">Endereço</label>
+                    <input type="text" id="endereco" placeholder="Rua, número, bairro, cidade">
+                </div>
+
+                <div class="campo" style="margin-top:14px;">
+                    <label for="motivo">Motivo da adoção</label>
+                    <textarea id="motivo" rows="3" placeholder="Conte um pouco sobre por que deseja adotar e como será a vida do animal com você..."></textarea>
+                </div>
+
+                <h3 class="secao-titulo">Documentação</h3>
+                <div class="docs-lista">
+
+                    <div class="doc-item" id="doc1">
+                        <div class="doc-header" onclick="toggleDoc('doc1')">
+                            <div class="doc-header-left">
+                                <span class="doc-icone">🪪</span>
+                                <div>
+                                    <div class="doc-nome">Carteira de Identidade (RG)</div>
+                                </div>
+                            </div>
+                            <span class="doc-seta">▼</span>
+                        </div>
+                        <div class="doc-body" hidden>
+                            <label class="upload-area-doc">
+                                <span>📎 Clique para anexar o documento</span>
+                                <span class="upload-sub">JPG, PNG ou PDF — máx. 5MB</span>
+                                <input type="file" accept=".jpg,.jpeg,.png,.pdf">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="doc-item" id="doc2">
+                        <div class="doc-header" onclick="toggleDoc('doc2')">
+                            <div class="doc-header-left">
+                                <span class="doc-icone">🏠</span>
+                                <div>
+                                    <div class="doc-nome">Comprovante de Residência</div>
+                                </div>
+                            </div>
+                            <span class="doc-seta">▼</span>
+                        </div>
+                        <div class="doc-body" hidden>
+                            <label class="upload-area-doc">
+                                <span>📎 Clique para anexar o documento</span>
+                                <span class="upload-sub">JPG, PNG ou PDF — máx. 5MB</span>
+                                <input type="file" accept=".jpg,.jpeg,.png,.pdf">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="doc-item" id="doc3">
+                        <div class="doc-header" onclick="toggleDoc('doc3')">
+                            <div class="doc-header-left">
+                                <span class="doc-icone">🗳️</span>
+                                <div>
+                                    <div class="doc-nome">Título de Eleitor</div>
+                                </div>
+                            </div>
+                            <span class="doc-seta">▼</span>
+                        </div>
+                        <div class="doc-body" hidden>
+                            <label class="upload-area-doc">
+                                <span>📎 Clique para anexar o documento</span>
+                                <span class="upload-sub">JPG, PNG ou PDF — máx. 5MB</span>
+                                <input type="file" accept=".jpg,.jpeg,.png,.pdf">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="doc-item" id="doc4">
+                        <div class="doc-header" onclick="toggleDoc('doc4')">
+                            <div class="doc-header-left">
+                                <span class="doc-icone">🎖️</span>
+                                <div>
+                                    <div class="doc-nome">Certificado de Reservista</div>
+                                    <div class="doc-nota">Obrigatório para pessoas de 18–45 anos</div>
+                                </div>
+                            </div>
+                            <span class="doc-seta">▼</span>
+                        </div>
+                        <div class="doc-body" hidden>
+                            <label class="upload-area-doc">
+                                <span>📎 Clique para anexar o documento</span>
+                                <span class="upload-sub">JPG, PNG ou PDF — máx. 5MB</span>
+                                <input type="file" accept=".jpg,.jpeg,.png,.pdf">
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="check-wrap" style="margin-top: 20px;">
+                    <input type="checkbox" id="termos">
+                    <label for="termos">Li e concordo com os <strong>termos de responsabilidade</strong> da adoção e comprometo-me a oferecer um lar seguro e amoroso ao animal.</label>
+                </div>
+
+                <button class="btn-adotar">Enviar Solicitação de Adoção ❤️</button>
+
+            </div>
+        </main>
+    </div>
+
+    <footer></footer>
+</div>
+
+<script>
+    function toggleDoc(id) {
+        const item = document.getElementById(id);
+        const body = item.querySelector('.doc-body');
+        const aberto = !body.hidden;
+        body.hidden = aberto;
+        item.classList.toggle('aberto', !aberto);
+    }
+</script>
+</body>
+</html>

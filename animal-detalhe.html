@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cleiton - ARCA</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
+        body { background: #f0f2f5; color: #343434; }
+        .container { display: flex; flex-direction: column; min-height: 100vh; }
+
+        header {
+            display: flex; align-items: center; justify-content: space-between;
+            background: #B9E0FF; padding: 0 32px; height: 64px;
+            position: sticky; top: 0; z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        header span { font-size: 21px; font-weight: 900; color: #1a2d52; letter-spacing: 4px; }
+        .header-sair {
+            font-size: 13px; color: #1a2d52; border: 1px solid rgba(26,45,82,0.3);
+            border-radius: 6px; padding: 6px 14px; background: transparent; cursor: pointer;
+        }
+        .header-sair:hover { background: #c0392b; border-color: #c0392b; color: #fff; }
+
+        .menu-lateral { display: flex; flex: 1; }
+
+        aside { width: 220px; min-height: calc(100vh - 64px); background: #D6EFE0; padding: 30px 0; flex-shrink: 0; }
+        aside ul { list-style: none; display: flex; flex-direction: column; gap: 4px; padding: 0 16px; }
+        aside ul li { font-size: 14px; font-weight: 500; border-radius: 10px; transition: background 0.2s; }
+        aside ul li a { display: block; padding: 12px 16px; color: #1a3a28; text-decoration: none; transition: padding-left 0.2s; }
+        aside ul li:hover, aside ul li.ativo { background: #FDCFA7; }
+        aside ul li:hover a, aside ul li.ativo a { color: #7a3a00; padding-left: 22px; }
+
+        .conteudo-principal { flex: 1; padding: 36px 40px; display: flex; justify-content: center; }
+
+        .card-detalhe {
+            background: #fff; border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.09);
+            width: 100%; max-width: 820px; overflow: hidden;
+        }
+
+        .animal-header {
+            background: linear-gradient(135deg, #B9E0FF 0%, #D6EFE0 100%);
+            padding: 24px 32px 20px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .animal-nome-titulo { font-size: 26px; font-weight: 900; color: #1a2d52; }
+        .animal-header-tags { display: flex; gap: 8px; }
+        .badge { font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px; background: #fff; color: #1a2d52; }
+        .badge.filhote { background: #FDCFA7; color: #7a3a00; }
+        .badge.macho { background: #e3f2fd; color: #0d47a1; }
+
+        .card-body { display: flex; }
+
+        .fotos-col {
+            width: 280px; flex-shrink: 0; padding: 24px;
+            display: flex; flex-direction: column; gap: 12px;
+            border-right: 1px solid #f0f0f0;
+        }
+
+        .foto-principal {
+            width: 100%; aspect-ratio: 1; border-radius: 14px; overflow: hidden;
+            background: #e0e8f0;
+        }
+        .foto-principal img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        .fotos-mini { display: flex; gap: 8px; }
+        .foto-mini {
+            flex: 1; aspect-ratio: 1; border-radius: 10px; overflow: hidden;
+            cursor: pointer; border: 2px solid transparent; transition: border-color 0.2s;
+        }
+        .foto-mini:hover { border-color: #1a2d52; }
+        .foto-mini.ativa { border-color: #1a2d52; }
+        .foto-mini img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        .info-col { flex: 1; padding: 28px 28px 0; display: flex; flex-direction: column; }
+        .descricao-texto {
+            font-size: 14px; line-height: 1.7; color: #444;
+            flex: 1; overflow-y: auto; max-height: 340px; scrollbar-width: thin;
+        }
+        .status-box {
+            background: #f8f9fa; border-radius: 12px; padding: 14px 16px; margin-top: 20px;
+            border-left: 4px solid #FDCFA7;
+        }
+        .status-box p { font-size: 13px; color: #555; line-height: 1.5; }
+        .status-box strong { color: #1a2d52; }
+
+        .card-footer {
+            border-top: 1px solid #f0f0f0; padding: 20px 32px;
+            display: flex; justify-content: space-between; align-items: center; gap: 14px;
+        }
+        .btn-voltar {
+            padding: 12px 32px; background: #f0f2f5; border: 2px solid #ddd;
+            border-radius: 10px; font-size: 14px; font-weight: 700;
+            color: #555; cursor: pointer; transition: all 0.2s; text-decoration: none;
+        }
+        .btn-voltar:hover { background: #e0e2e5; border-color: #bbb; }
+        .btn-adotar {
+            padding: 12px 48px; background: #1a2d52; border: none;
+            border-radius: 10px; font-size: 14px; font-weight: 700;
+            color: #FDCFA7; cursor: pointer; transition: background 0.2s; text-decoration: none;
+        }
+        .btn-adotar:hover { background: #142240; }
+
+        footer { background: #B9E0FF; height: 50px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <span>ARCA</span>
+        <button class="header-sair">Sair</button>
+    </header>
+
+    <div class="menu-lateral">
+        <aside>
+            <ul>
+                <li><a href="telainicial.html">&#127968; Home</a></li>
+                <li><a href="sobre-nós.html">&#8505; Sobre Nós</a></li>
+                <li class="ativo"><a href="adocao.html">&#10084; Adoção</a></li>
+                <li><a href="agendamento.html">&#128197; Agendamentos</a></li>
+                <li><a href="emergencia.html">&#9888; Emergências</a></li>
+                <li><a href="eventos.html">&#11088; Eventos</a></li>
+                <li><a href="processos.html">&#128196; Processos</a></li>
+                <li><a href="ajuda.html">&#10067; Ajuda</a></li>
+                <li><a href="perfil.html">&#128100; Perfil</a></li>
+            </ul>
+        </aside>
+
+        <main class="conteudo-principal">
+            <div class="card-detalhe">
+
+                <div class="animal-header">
+                    <span class="animal-nome-titulo">Cleiton</span>
+                    <div class="animal-header-tags">
+                        <span class="badge">Cachorro</span>
+                        <span class="badge macho">♂ Macho</span>
+                        <span class="badge filhote">Filhote</span>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="fotos-col">
+                        <div class="foto-principal">
+                            <img id="foto-principal-img"
+                                 src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=500&h=500&fit=crop"
+                                 alt="Cleiton">
+                        </div>
+                        <div class="fotos-mini">
+                            <div class="foto-mini ativa" onclick="trocarFoto(this, 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=500&h=500&fit=crop')">
+                                <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=200&h=200&fit=crop" alt="">
+                            </div>
+                            <div class="foto-mini" onclick="trocarFoto(this, 'https://images.unsplash.com/photo-1558788353-f76d92427f16?w=500&h=500&fit=crop')">
+                                <img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?w=200&h=200&fit=crop" alt="">
+                            </div>
+                            <div class="foto-mini" onclick="trocarFoto(this, 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=500&h=500&fit=crop')">
+                                <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=200&h=200&fit=crop" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-col">
+                        <div class="descricao-texto">
+                            <p><strong>O Grande Sonho de Cleito 🐾</strong></p><br>
+                            <p>Cleito não é um cachorrinho comum. Ele é um verdadeiro especialista em duas coisas: dar rabadas de alegria que parecem um pequeno helicóptero e testar a maciez de qualquer tapete que encontra pela frente.</p><br>
+                            <p>Com suas orelhas expressivas e um olhar que derrete até o coração mais durão, Cleito passa os dias no abrigo com uma missão muito clara. Enquanto os outros cães latem para chamar atenção, Cleito prefere usar a sua tática secreta: ele senta elegantemente, inclina a cabeça para o lado e espera pacientemente que alguém perceba o tamanho do seu coração.</p><br>
+                            <p>Ele adora correr atrás de bolinhas (embora às vezes esqueça de devolvê-las) e é um companheiro nota dez para maratonar séries no sofá, prometendo não dar nenhum spoiler, desde que ganhe um cafuné atrás da orelha.</p><br>
+                            <p>Cleito está com as malas prontas, o estoque de amor renovado e só precisa de uma chance para mostrar que é o parceiro ideal para todas as horas. Que tal dar um final feliz para essa história e transformar o Cleito no novo membro da sua família?</p>
+                        </div>
+
+                        <div class="status-box">
+                            <p>&#128151; <strong>Status:</strong> Ansioso por um sofá para chamar de seu e um humano para amar para sempre.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <a href="adocao.html" class="btn-voltar">← Voltar</a>
+                    <a href="formulario-adocao.html" class="btn-adotar">Adotar Cleiton ❤️</a>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <footer></footer>
+</div>
+
+<script>
+function trocarFoto(el, src) {
+    document.getElementById('foto-principal-img').src = src;
+    document.querySelectorAll('.foto-mini').forEach(m => m.classList.remove('ativa'));
+    el.classList.add('ativa');
+}
+</script>
+</body>
+</html>

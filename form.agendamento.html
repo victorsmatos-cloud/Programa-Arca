@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Agendamento - ARCA</title>
+    <link rel="stylesheet" href="style-form.agendamento.css">
+</head>
+<body>
+    <div class="container">
+
+        <header>
+            <div class="header-esquerda">
+                <span>ARCA</span>
+            </div>
+            <button class="header-sair">Sair</button>
+        </header>
+
+        <div class="menu-lateral">
+
+            <aside>
+                <ul>
+                    <li><a href="telainicial.html">&#127968; Home</a></li>
+                    <li><a href="sobre-nós.html">&#8505; Sobre Nós</a></li>
+                    <li><a href="adocao.html">&#10084; Adoção</a></li>
+                    <li class="ativo"><a href="agendamento.html">&#128197; Agendamentos</a></li>
+                    <li><a href="emergencia.html">&#9888; Emergências</a></li>
+                    <li><a href="eventos.html">&#11088; Eventos</a></li>
+                    <li><a href="processos.html">&#128196; Processos</a></li>
+                    <li><a href="ajuda.html">&#10067; Ajuda</a></li>
+                    <li><a href="perfil.html">&#128100; Perfil</a></li>
+                </ul>
+            </aside>
+
+            <main class="conteudo-principal">
+                <div class="cards">
+                    <h1>Formulário de Agendamento</h1>
+                    <p class="subtitulo">Preencha os dados abaixo para confirmar seu agendamento.</p>
+
+                    <form id="form-agendamento" novalidate>
+
+                        <h3 class="secao-titulo">Dados do Tutor</h3>
+
+                        <div class="form-grid">
+                            <div class="campo">
+                                <label for="nome">Nome Completo</label>
+                                <input type="text" id="nome" placeholder="Seu nome completo" required>
+                            </div>
+                            <div class="campo">
+                                <label for="email">E-mail</label>
+                                <input type="email" id="email" placeholder="Seu e-mail" required>
+                            </div>
+                            <div class="campo">
+                                <label for="cpf">CPF / CNPJ</label>
+                                <input type="text" id="cpf" placeholder="Digite seu CPF ou CNPJ" required>
+                            </div>
+                            <div class="campo">
+                                <label for="telefone">Telefone</label>
+                                <input type="tel" id="telefone" placeholder="(00) 00000-0000" required>
+                            </div>
+                        </div>
+
+                        <h3 class="secao-titulo">Dados do Animal</h3>
+
+                        <div class="form-grid">
+                            <div class="campo">
+                                <label for="animal-nome">Nome do Animal</label>
+                                <input type="text" id="animal-nome" placeholder="Nome do pet" required>
+                            </div>
+                            <div class="campo">
+                                <label for="especie">Espécie</label>
+                                <select id="especie">
+                                    <option value="">Selecione</option>
+                                    <option>Cão</option>
+                                    <option>Gato</option>
+                                </select>
+                            </div>
+                            <div class="campo">
+                                <label for="sexo">Sexo</label>
+                                <select id="sexo">
+                                    <option value="">Selecione</option>
+                                    <option>Macho</option>
+                                    <option>Fêmea</option>
+                                </select>
+                            </div>
+                            <div class="campo">
+                                <label for="idade">Idade</label>
+                                <input type="text" id="idade" placeholder="Ex: 2 anos">
+                            </div>
+                        </div>
+
+                        <h3 class="secao-titulo">Data do Agendamento</h3>
+
+                        <div class="calendario" id="calendario">
+                            <div class="cal-header">
+                                <button type="button" id="mes-anterior">&#8592;</button>
+                                <span id="mes-ano"></span>
+                                <button type="button" id="proximo-mes">&#8594;</button>
+                            </div>
+                            <div class="cal-dias-semana">
+                                <span>D</span><span>S</span><span>T</span>
+                                <span>Q</span><span>Q</span><span>S</span><span>S</span>
+                            </div>
+                            <div class="cal-dias" id="cal-dias"></div>
+                            <p class="data-selecionada" id="data-selecionada">Nenhuma data selecionada</p>
+                        </div>
+
+                        <button type="submit" class="btn-cadastrar">Confirmar Agendamento</button>
+                        <br><br>
+                        <a href="agendamento.html" class="btn-voltar">← Voltar</a>
+
+                    </form>
+                </div>
+            </main>
+
+        </div>
+
+        <footer></footer>
+    </div>
+
+</body>
+</html>

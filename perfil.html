@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - ARCA</title>
+    <link rel="stylesheet" href="style-perfil.css">
+</head>
+<body>
+    <div class="container">
+ 
+        <header>
+            <div class="header-esquerda">
+                <span>ARCA</span>
+            </div>
+            <button class="header-sair">Sair</button>
+        </header>
+ 
+        <div class="menu-lateral">
+ 
+            <aside>
+                <ul>
+                    <li><a href="telainicial.html">&#127968; Home</a></li>
+                    <li><a href="sobre-nós.html">&#8505; Sobre Nós</a></li>
+                    <li><a href="adocao.html">&#10084; Adoção</a></li>
+                    <li><a href="agendamento.html">&#128197; Agendamentos</a></li>
+                    <li><a href="emergencia.html">&#9888; Emergências</a></li>
+                    <li><a href="eventos.html">&#11088; Eventos</a></li>
+                    <li><a href="processos.html">&#128196; Processos</a></li>
+                    <li><a href="ajuda.html">&#10067; Ajuda</a></li>
+                    <li class="ativo"><a href="perfil.html">&#128100; Perfil</a></li>
+                </ul>
+            </aside>
+ 
+            <main class="conteudo-principal">
+                <div class="perfil-container">
+ 
+                    
+                    <div class="perfil-topo">
+                        <div class="perfil-avatar">
+                            <div class="avatar-circulo" id="avatar-conteudo">??</div>
+                            <button class="btn-foto" id="btn-alterar-foto">Alterar foto</button>
+                            <input type="file" id="input-foto" accept="image/*" style="display:none;">
+                        </div>
+                        <div class="perfil-nome">
+                            <h1 id="perfil-nome-titulo">Carregando...</h1>
+                            <span class="perfil-badge">Usuário Comum</span>
+                            <p>Membro desde Janeiro de 2025</p>
+                        </div>
+                    </div>
+ 
+                    
+                    <div class="perfil-card">
+                        <h2>Dados Pessoais</h2>
+                        <div class="perfil-grid">
+                            <div class="perfil-campo">
+                                <label>Nome Completo</label>
+                                <span id="perfil-nome-dado">—</span>
+                            </div>
+                            <div class="perfil-campo">
+                                <label>E-mail</label>
+                                <span id="perfil-email">—</span>
+                            </div>
+                            <div class="perfil-campo">
+                                <label>CPF</label>
+                                <span id="perfil-cpf">—</span>
+                            </div>
+                            <div class="perfil-campo">
+                                <label>Telefone</label>
+                                <span id="perfil-telefone">—</span>
+                            </div>
+                        </div>
+                    </div>
+ 
+                    
+                    <div class="perfil-card">
+                        <h2>Endereço</h2>
+                        <div class="perfil-grid">
+                            <div class="perfil-campo">
+                                <label>Rua</label>
+                                <span>Rua das Flores</span>
+                            </div>
+                            <div class="perfil-campo">
+                                <label>Bairro</label>
+                                <span>Centro</span>
+                            </div>
+                            <div class="perfil-campo">
+                                <label>Número</label>
+                                <span>123</span>
+                            </div>
+                            <div class="perfil-campo">
+                                <label>CEP</label>
+                                <span>29000-000</span>
+                            </div>
+                            <div class="perfil-campo">
+                                <label>Cidade</label>
+                                <span>Serra</span>
+                            </div>
+                            <div class="perfil-campo">
+                                <label>Estado</label>
+                                <span>Espírito Santo</span>
+                            </div>
+                        </div>
+                    </div>
+ 
+                </div>
+            </main>
+        </div>
+ 
+        <footer></footer>
+    </div>
+
+<script>
+    const usuarioSalvo = JSON.parse(localStorage.getItem('usuarioARCA'));
+
+    if (!usuarioSalvo) {
+        window.location.href = 'login.html';
+    } else {
+        const nomeCompleto = usuarioSalvo.nome || 'Usuário';
+        const partes = nomeCompleto.trim().split(' ');
+        const iniciais = partes.length >= 2
+            ? partes[0][0] + partes[partes.length - 1][0]
+            : partes[0][0];
+
+        document.getElementById('perfil-nome-titulo').textContent = nomeCompleto;
+        document.getElementById('perfil-nome-dado').textContent = nomeCompleto;
+        document.getElementById('perfil-email').textContent = usuarioSalvo.email || '—';
+        document.getElementById('perfil-cpf').textContent = usuarioSalvo.cpf || '—';
+        document.getElementById('perfil-telefone').textContent = usuarioSalvo.telefone || '—';
+
+        const avatarEl = document.getElementById('avatar-conteudo');
+        if (usuarioSalvo.foto) {
+            avatarEl.innerHTML = `<img src="${usuarioSalvo.foto}" alt="Foto de perfil" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
+        } else {
+            avatarEl.textContent = iniciais.toUpperCase();
+        }
+    }
+
+    document.getElementById('btn-alterar-foto').addEventListener('click', function () {
+        document.getElementById('input-foto').click();
+    });
+
+    document.getElementById('input-foto').addEventListener('change', function (e) {
+        const arquivo = e.target.files[0];
+        if (!arquivo) return;
+
+        const reader = new FileReader();
+        reader.onload = function (ev) {
+            const base64 = ev.target.result;
+            const usuario = JSON.parse(localStorage.getItem('usuarioARCA'));
+            usuario.foto = base64;
+            localStorage.setItem('usuarioARCA', JSON.stringify(usuario));
+            document.getElementById('avatar-conteudo').innerHTML =
+                `<img src="${base64}" alt="Foto de perfil" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
+        };
+        reader.readAsDataURL(arquivo);
+    });
+
+    document.querySelector('.header-sair').addEventListener('click', function () {
+        alert('Você saiu da conta.');
+        window.location.href = 'login.html';
+    });
+</script>
+
+</body>
+</html>

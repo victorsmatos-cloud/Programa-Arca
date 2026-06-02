@@ -143,7 +143,6 @@ aside ul li.ativo a {
     margin-bottom: 28px;
 }
 
-/* CONTATO RÁPIDO */
 .contato-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -181,7 +180,6 @@ aside ul li.ativo a {
     color: #1a2d52;
 }
 
-/* FAQ */
 .faq-lista {
     display: flex;
     flex-direction: column;
@@ -253,7 +251,6 @@ aside ul li.ativo a {
     display: block;
 }
 
-/* FORMULÁRIO DE CONTATO */
 .form-contato {
     margin-top: 4px;
 }

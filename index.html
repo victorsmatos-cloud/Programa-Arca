@@ -1,1 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="style-login.css">
+</head>
+<body>
+    
+    <div class="caixa">
+        <form id="form-login">
+            <h1>Login</h1>
+            <div class="input-caixa">
+                <input type="text" id="login-email" placeholder="Usuario" required>
+            </div>
 
+            <div class="input-caixa">
+                <input type="password" id="login-senha" placeholder="Senha" required>
+            </div>
+
+            <div class="lembrar-senha">
+                <label>
+                    <input type="checkbox"> Lembrar minha senha
+                </label>
+                <a href="#">Esqueci minha senha?</a>
+            </div>
+            
+            <br>
+            <button type="submit" class="btn">Entrar</button>
+
+            <div class="cadastro">
+                <p>Não tem conta? 
+                    <a href="cadastro.html">Cadastre-se</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('form-login').addEventListener('submit', function(event) {
+            
+            event.preventDefault(); 
+
+            const emailDigitado = document.getElementById('login-email').value;
+            const senhaDigitada = document.getElementById('login-senha').value;
+
+            const usuarioSalvoStr = localStorage.getItem('usuarioARCA');
+
+            if (!usuarioSalvoStr) {
+                alert("Nenhum cadastro encontrado! Por favor, cadastre-se primeiro.");
+                return;
+            }
+
+            const usuarioSalvo = JSON.parse(usuarioSalvoStr);
+
+            if (emailDigitado === usuarioSalvo.email && senhaDigitada === usuarioSalvo.senha) {  
+                alert("Login efetuado com sucesso! Bem-vindo, " + usuarioSalvo.nome);
+                window.location.replace("./telainicial.html");  
+            } else {
+                alert("E-mail ou senha incorretos. Tente novamente.");
+            }
+        });
+    </script>
+
+</body>
+</html>

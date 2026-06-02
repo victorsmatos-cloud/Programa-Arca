@@ -143,7 +143,6 @@ aside ul li.ativo a {
     margin-bottom: 28px;
 }
 
-/* RESUMO */
 .resumo-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -176,7 +175,6 @@ aside ul li.ativo a {
     color: #1a2d52;
 }
 
-/* PROCESSOS */
 .processos-lista {
     display: flex;
     flex-direction: column;
@@ -231,7 +229,6 @@ aside ul li.ativo a {
 .status-documentos { background: #FDCFA7; color: #7a3a00; }
 .status-concluido { background: #D6EFE0; color: #1a3a28; }
 
-/* TIMELINE */
 .processo-timeline {
     display: flex;
     align-items: center;
@@ -310,7 +307,6 @@ aside ul li.ativo a {
     background: #B9E0FF;
 }
 
-/* FOOTER DO CARD */
 .processo-footer {
     border-top: 1px solid #f0f2f5;
     padding-top: 16px;
@@ -333,7 +329,6 @@ aside ul li.ativo a {
     color: #7a3a00;
 }
 
-/* CONCLUÍDOS */
 .concluido-card {
     background: #fafafa;
 }

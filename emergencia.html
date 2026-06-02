@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergências - ARCA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f0f2f5;
+            color: #343434;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #B9E0FF;
+            padding: 0 32px;
+            height: 64px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header span {
+            font-size: 21px;
+            font-weight: 900;
+            color: #1a2d52;
+            letter-spacing: 4px;
+        }
+
+        .header-sair {
+            font-size: 13px;
+            color: #1a2d52;
+            border: 1px solid rgba(26, 45, 82, 0.3);
+            border-radius: 6px;
+            padding: 6px 14px;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .header-sair:hover {
+            background: #c0392b;
+            border-color: #c0392b;
+            color: #fff;
+        }
+
+        .menu-lateral {
+            display: flex;
+            flex: 1;
+        }
+
+        aside {
+            width: 220px;
+            min-height: calc(100vh - 64px);
+            background: #D6EFE0;
+            padding: 30px 0;
+            flex-shrink: 0;
+        }
+
+        aside ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 0 16px;
+        }
+
+        aside ul li {
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 10px;
+            transition: background 0.2s;
+        }
+
+        aside ul li a {
+            display: block;
+            padding: 12px 16px;
+            color: #1a3a28;
+            text-decoration: none;
+            transition: padding-left 0.2s;
+        }
+
+        aside ul li:hover,
+        aside ul li.ativo {
+            background: #FDCFA7;
+        }
+
+        aside ul li:hover a,
+        aside ul li.ativo a {
+            color: #7a3a00;
+            padding-left: 22px;
+        }
+
+        .conteudo-principal {
+            flex: 1;
+            padding: 36px 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 36px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 700px;
+            height: fit-content;
+        }
+
+        .card h1 {
+            color: #1a2d52;
+            font-size: 22px;
+            font-weight: 900;
+            border-bottom: 3px solid #FDCFA7;
+            padding-bottom: 10px;
+            margin-bottom: 6px;
+        }
+
+        .subtitulo {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .secao-titulo {
+            color: #1a2d52;
+            font-size: 14px;
+            font-weight: 700;
+            border-left: 4px solid #FDCFA7;
+            padding-left: 10px;
+            margin: 24px 0 14px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .campo {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+
+        .campo label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #1a2d52;
+        }
+
+        .campo input,
+        .campo select,
+        .campo textarea {
+            padding: 0 14px;
+            height: 46px;
+            border: 2px solid #B9E0FF;
+            border-radius: 10px;
+            font-size: 14px;
+            outline: none;
+            color: #343434;
+            transition: border-color 0.2s;
+            background: #fff;
+        }
+
+        .campo textarea {
+            height: auto;
+            padding: 12px 14px;
+            resize: vertical;
+            font-family: inherit;
+            line-height: 1.6;
+        }
+
+        .campo input:focus,
+        .campo select:focus,
+        .campo textarea:focus {
+            border-color: #1a2d52;
+        }
+
+        .campo input::placeholder,
+        .campo textarea::placeholder {
+            color: #aaa;
+        }
+
+        .tipo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .tipo-card {
+            cursor: pointer;
+            border: 2px solid #B9E0FF;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+
+        .tipo-card input {
+            display: none;
+        }
+
+        .tipo-conteudo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            padding: 14px 10px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #1a2d52;
+            text-align: center;
+        }
+
+        .tipo-conteudo span:first-child {
+            font-size: 24px;
+        }
+
+        .tipo-card:hover {
+            border-color: #1a2d52;
+            background: #f8faff;
+        }
+
+        .tipo-card:has(input:checked) {
+            border-color: #1a2d52;
+            background: #1a2d52;
+        }
+
+        .tipo-card:has(input:checked) .tipo-conteudo {
+            color: #FDCFA7;
+        }
+
+        .upload-area {
+            border: 2px dashed #B9E0FF;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: #fafcff;
+            font-size: 14px;
+            color: #1a2d52;
+            font-weight: 600;
+        }
+
+        .upload-area:hover {
+            border-color: #1a2d52;
+            background: #f0f6ff;
+        }
+
+        .upload-area input[type="file"] {
+            display: none;
+        }
+
+        .upload-sub {
+            font-size: 12px;
+            color: #aaa;
+            font-weight: 400;
+        }
+
+        .btn-enviar {
+            width: 100%;
+            height: 48px;
+            background: #c0392b;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 24px;
+            transition: background 0.2s;
+        }
+
+        .btn-enviar:hover {
+            background: #a93226;
+        }
+
+        footer {
+            background: #B9E0FF;
+            height: 50px;
+        }
+    </style>
+    <link rel="stylesheet" href="style-emergencia.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <header>
+            <span>ARCA</span>
+            <button class="header-sair">Sair</button>
+        </header>
+
+        <div class="menu-lateral">
+
+            <aside>
+                <ul>
+                    <li><a href="telainicial.html">&#127968; Home</a></li>
+                    <li><a href="sobre-nós.html">&#8505; Sobre Nós</a></li>
+                    <li><a href="adocao.html">&#10084; Adoção</a></li>
+                    <li><a href="agendamento.html">&#128197; Agendamentos</a></li>
+                    <li class="ativo"><a href="emergencia.html">&#9888; Emergências</a></li>
+                    <li><a href="eventos.html">&#11088; Eventos</a></li>
+                    <li><a href="processos.html">&#128196; Processos</a></li>
+                    <li><a href="ajuda.html">&#10067; Ajuda</a></li>
+                    <li><a href="perfil.html">&#128100; Perfil</a></li>
+                </ul>
+            </aside>
+
+            <main class="conteudo-principal">
+
+                <div class="card">
+                    <h1>&#9888; Reportar Emergência</h1>
+                    <p class="subtitulo">Preencha os dados abaixo para acionar nossa equipe de resgate.</p>
+
+                    <form action="#" method="post">
+
+                        <h3 class="secao-titulo">Seus Dados</h3>
+                        <div class="form-grid">
+                            <div class="campo">
+                                <label for="nome">Nome</label>
+                                <input type="text" id="nome" name="nome" placeholder="Seu nome completo">
+                            </div>
+                            <div class="campo">
+                                <label for="telefone">Telefone</label>
+                                <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000">
+                            </div>
+                        </div>
+
+                        <h3 class="secao-titulo">Local da Ocorrência</h3>
+                        <div class="form-grid">
+                            <div class="campo">
+                                <label for="rua">Rua / Avenida</label>
+                                <input type="text" id="rua" name="rua" placeholder="Ex: Rua das Flores">
+                            </div>
+                            <div class="campo">
+                                <label for="numero">Número / Referência</label>
+                                <input type="text" id="numero" name="numero" placeholder="Ex: 123 ou perto da padaria">
+                            </div>
+                            <div class="campo">
+                                <label for="bairro">Bairro</label>
+                                <input type="text" id="bairro" name="bairro" placeholder="Nome do bairro">
+                            </div>
+                            <div class="campo">
+                                <label for="cep">CEP</label>
+                                <input type="text" id="cep" name="cep" placeholder="00000-000">
+                            </div>
+                        </div>
+
+                        <h3 class="secao-titulo">Sobre o Animal</h3>
+                        <div class="form-grid">
+                            <div class="campo">
+                                <label for="especie">Espécie</label>
+                                <select id="especie" name="especie">
+                                    <option value="">Selecione</option>
+                                    <option>Cão</option>
+                                    <option>Gato</option>
+                                    <option>Outro</option>
+                                </select>
+                            </div>
+                            <div class="campo">
+                                <label for="qtd">Quantidade</label>
+                                <input type="number" id="qtd" name="qtd" placeholder="Ex: 1" min="1">
+                            </div>
+                        </div>
+
+                        <h3 class="secao-titulo">Tipo de Ocorrência</h3>
+                        <div class="tipo-grid">
+                            <label class="tipo-card">
+                                <input type="radio" name="tipo" value="abandono">
+                                <div class="tipo-conteudo"><span>🐾</span><span>Abandono</span></div>
+                            </label>
+                            <label class="tipo-card">
+                                <input type="radio" name="tipo" value="maus-tratos">
+                                <div class="tipo-conteudo"><span>🚨</span><span>Maus-tratos</span></div>
+                            </label>
+                            <label class="tipo-card">
+                                <input type="radio" name="tipo" value="atropelamento">
+                                <div class="tipo-conteudo"><span>🚗</span><span>Atropelamento</span></div>
+                            </label>
+                            <label class="tipo-card">
+                                <input type="radio" name="tipo" value="doente">
+                                <div class="tipo-conteudo"><span>🏥</span><span>Animal Doente</span></div>
+                            </label>
+                            <label class="tipo-card">
+                                <input type="radio" name="tipo" value="ferido">
+                                <div class="tipo-conteudo"><span>🩹</span><span>Animal Ferido</span></div>
+                            </label>
+                            <label class="tipo-card">
+                                <input type="radio" name="tipo" value="outro">
+                                <div class="tipo-conteudo"><span>❓</span><span>Outro</span></div>
+                            </label>
+                        </div>
+
+                        <h3 class="secao-titulo">Descrição</h3>
+                        <div class="campo">
+                            <label for="descricao">O que está acontecendo?</label>
+                            <textarea id="descricao" name="descricao" rows="4"
+                                placeholder="Descreva a situação..."></textarea>
+                        </div>
+
+                        <div class="campo">
+                            <label for="foto">Foto do animal (opcional)</label>
+                            <label for="foto" class="upload-area">
+                                <span>📷 Clique para anexar uma foto</span>
+                                <span class="upload-sub">JPG ou PNG — máx. 5MB</span>
+                                <input type="file" id="foto" name="foto" accept=".jpg,.jpeg,.png">
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn-enviar">Enviar Ocorrência</button>
+
+                    </form>
+                </div>
+
+            </main>
+        </div>
+
+        <footer></footer>
+    </div>
+</body>
+
+</html>
